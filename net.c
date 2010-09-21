@@ -9,7 +9,15 @@ See LICENSE for details.
 #include "net.h"
 #include <errno.h>
 
-int mplay_init(char *addr, char *port, char serve, char udp) {
+#define bool char
+
+//initializes a socket
+//serve specifies if this is a server socket (1) or a client socket (0)
+//udp specifies whether to use udp (1) or tcp (1)
+//if this is not a server, addr and port specify who to connect to.
+//IPv4 and v6 are both supported.
+//Returns an identifier for the socket, or negative on error.
+int mplay_init(char *addr, char *port, bool serve, bool udp) {
 
 #ifdef WIN32
  // Make sure windows is using Winsock version request 2.2
