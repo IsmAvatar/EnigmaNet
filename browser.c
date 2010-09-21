@@ -151,9 +151,9 @@ int main() {
  char *ip = http("www.whatismyip.com","/automation/n09230945.asp");
  printf("Your IP is %s\n\n",ip);
 
- char *host = "ftp.phx.nearlyfreespeech.net";
- char *user = "IsmAvatar_ismavatar";
- char *pass = "guten315";
+ char *host = "localhost";
+ char *user = "root";
+ char *pass = "";
  int ftp = ftp_open(host,user,pass);
  ftp_send(ftp,"ip.txt",ip,strlen(ip));
  ftp_close(ftp);
