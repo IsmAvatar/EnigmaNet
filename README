@@ -1,0 +1,5 @@
+A tiered approach to network functions, built from the socket level to the high
+level for use by Enigma to replace GM's mplay functions.
+
+Copyright (c) IsmAvatar <IsmAvatar@gmail.com>
+
