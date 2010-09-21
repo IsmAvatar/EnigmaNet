@@ -1,3 +1,11 @@
+/*
+Copyright (C) 2010 IsmAvatar <IsmAvatar@gmail.com>
+
+This file is part of EnigmaNet
+EnigmaNet is free software and comes with ABSOLUTELY NO WARRANTY.
+See LICENSE for details.
+*/
+
 #include <stdio.h>
 #include <string.h>
 

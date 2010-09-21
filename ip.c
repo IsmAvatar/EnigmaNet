@@ -1,4 +1,12 @@
 /*
+Copyright (C) 2010 IsmAvatar <IsmAvatar@gmail.com>
+
+This file is part of EnigmaNet
+EnigmaNet is free software and comes with ABSOLUTELY NO WARRANTY.
+See LICENSE for details.
+*/
+
+/*
 gcc ip.c -o ip.exe -Iinclude -Llib -DCURL_STATICLIB -lcurl -lssh2 C:/MinGW/bin/libeay32.dll C:/MinGW/bin/libssl32.dll -lwldap32 -lws2_32 -lz
 */
 #include <curl/curl.h>
