@@ -1,0 +1,358 @@
+# depslib dependency file v1.0
+1285114367 source:e:\_enigma\git\enigmanetsfml\network\ftp.cpp
+	"./Ftp.hpp"
+	"./IpAddress.hpp"
+	<algorithm>
+	<fstream>
+	<iterator>
+	<sstream>
+
+1285114502 e:\_enigma\git\enigmanetsfml\network\ftp.hpp
+	"../System/NonCopyable.hpp"
+	"./TcpSocket.hpp"
+	<string>
+	<vector>
+
+1285114514 e:\_enigma\git\enigmanetsfml\system\noncopyable.hpp
+	"../Config.hpp"
+
+1285154015 e:\_enigma\git\enigmanetsfml\config.hpp
+	<climits>
+
+1285114551 e:\_enigma\git\enigmanetsfml\network\tcpsocket.hpp
+	"./Socket.hpp"
+
+1285114570 e:\_enigma\git\enigmanetsfml\network\socket.hpp
+	"./SocketHandle.hpp"
+	"../System/NonCopyable.hpp"
+	<vector>
+
+1285114578 e:\_enigma\git\enigmanetsfml\network\sockethandle.hpp
+	"../Config.hpp"
+	<BaseTsd.h>
+
+1285114589 e:\_enigma\git\enigmanetsfml\network\ipaddress.hpp
+	"../Config.hpp"
+	<istream>
+	<ostream>
+	<string>
+
+1285114601 source:e:\_enigma\git\enigmanetsfml\network\http.cpp
+	"./Http.hpp"
+	<cctype>
+	<algorithm>
+	<iterator>
+	<sstream>
+
+1285114617 e:\_enigma\git\enigmanetsfml\network\http.hpp
+	"../System/NonCopyable.hpp"
+	"./IpAddress.hpp"
+	"./TcpSocket.hpp"
+	<map>
+	<string>
+
+1285114634 source:e:\_enigma\git\enigmanetsfml\network\ipaddress.cpp
+	"./IpAddress.hpp"
+	"./Http.hpp"
+	"./SocketImpl.hpp"
+
+1285152813 e:\_enigma\git\enigmanetsfml\network\socketimpl.hpp
+	"../Config.hpp"
+	"./Win32/SocketImpl.hpp"
+	"./Unix/SocketImpl.hpp"
+
+1285153766 e:\_enigma\git\enigmanetsfml\network\win32\socketimpl.hpp
+	"../Socket.hpp"
+	<winsock2.h>
+
+1285153421 e:\_enigma\git\enigmanetsfml\network\unix\socketimpl.hpp
+	"../Socket.hpp"
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<netinet/tcp.h>
+	<arpa/inet.h>
+	<netdb.h>
+	<unistd.h>
+
+1285114711 source:e:\_enigma\git\enigmanetsfml\network\packet.cpp
+	"./Packet.hpp"
+	"./SocketImpl.hpp"
+	"../System/String.hpp"
+	<cstring>
+
+1285114717 e:\_enigma\git\enigmanetsfml\network\packet.hpp
+	"../Config.hpp"
+	<string>
+	<vector>
+
+1285114724 e:\_enigma\git\enigmanetsfml\system\string.hpp
+	"../Config.hpp"
+	<locale>
+	<string>
+
+1285114742 source:e:\_enigma\git\enigmanetsfml\network\socket.cpp
+	"./Socket.hpp"
+	"./SocketImpl.hpp"
+	"../System/Err.hpp"
+
+1285114760 e:\_enigma\git\enigmanetsfml\system\err.hpp
+	"../Config.hpp"
+	<ostream>
+
+1285114936 source:e:\_enigma\git\enigmanetsfml\network\socketselector.cpp
+	"./SocketSelector.hpp"
+	"./Socket.hpp"
+	"./SocketImpl.hpp"
+	"../System/Err.hpp"
+	<utility>
+
+1285114944 e:\_enigma\git\enigmanetsfml\network\socketselector.hpp
+	"../Config.hpp"
+
+1285114972 source:e:\_enigma\git\enigmanetsfml\network\tcplistener.cpp
+	"./TcpListener.hpp"
+	"./TcpSocket.hpp"
+	"./SocketImpl.hpp"
+	"../System/Err.hpp"
+
+1285114980 e:\_enigma\git\enigmanetsfml\network\tcplistener.hpp
+	"./Socket.hpp"
+
+1285115003 source:e:\_enigma\git\enigmanetsfml\network\tcpsocket.cpp
+	"./TcpSocket.hpp"
+	"./IpAddress.hpp"
+	"./Packet.hpp"
+	"./SocketImpl.hpp"
+	"../System/Err.hpp"
+	<algorithm>
+	<cstring>
+
+1285115037 source:e:\_enigma\git\enigmanetsfml\network\udpsocket.cpp
+	"./UdpSocket.hpp"
+	"./IpAddress.hpp"
+	"./Packet.hpp"
+	"./SocketImpl.hpp"
+	"../System/Err.hpp"
+	<algorithm>
+
+1285115044 e:\_enigma\git\enigmanetsfml\network\udpsocket.hpp
+	"./Socket.hpp"
+
+1285153798 source:e:\_enigma\git\enigmanetsfml\network\win32\socketimpl.cpp
+	"./SocketImpl.hpp"
+	<cstring>
+
+1285117812 source:e:\_enigma\git\enigmanetsfml\system\clock.cpp
+	"./Clock.hpp"
+	"./Platform.hpp"
+
+1285117339 e:\_enigma\git\enigmanetsfml\system\clock.hpp
+	"../Config.hpp"
+
+1285117834 e:\_enigma\git\enigmanetsfml\system\platform.hpp
+	"../Config.hpp"
+	"./Win32/Platform.hpp"
+	"./Unix/Platform.hpp"
+
+1285153859 e:\_enigma\git\enigmanetsfml\system\win32\platform.hpp
+	"../../Config.hpp"
+	<vector>
+
+1285153570 e:\_enigma\git\enigmanetsfml\system\unix\platform.hpp
+	"../../Config.hpp"
+	<vector>
+
+1285117852 source:e:\_enigma\git\enigmanetsfml\system\err.cpp
+	"./Err.hpp"
+	<streambuf>
+	<cstdio>
+
+1285117879 source:e:\_enigma\git\enigmanetsfml\system\lock.cpp
+	"./Lock.hpp"
+	"./Mutex.hpp"
+
+1285117352 e:\_enigma\git\enigmanetsfml\system\lock.hpp
+	"./NonCopyable.hpp"
+
+1285117367 e:\_enigma\git\enigmanetsfml\system\mutex.hpp
+	"../Config.hpp"
+	"./NonCopyable.hpp"
+
+1285117899 source:e:\_enigma\git\enigmanetsfml\system\mutex.cpp
+	"./Mutex.hpp"
+	"./Win32/MutexImpl.hpp"
+	"./Unix/MutexImpl.hpp"
+
+1285153853 e:\_enigma\git\enigmanetsfml\system\win32\muteximpl.hpp
+	"../NonCopyable.hpp"
+	<windows.h>
+
+1285153520 e:\_enigma\git\enigmanetsfml\system\unix\muteximpl.hpp
+	"../NonCopyable.hpp"
+	<pthread.h>
+
+1285117927 source:e:\_enigma\git\enigmanetsfml\system\randomizer.cpp
+	"./Randomizer.hpp"
+	<cstdlib>
+	<ctime>
+
+1285117374 e:\_enigma\git\enigmanetsfml\system\randomizer.hpp
+	"../Config.hpp"
+
+1285117939 source:e:\_enigma\git\enigmanetsfml\system\sleep.cpp
+	"./Sleep.hpp"
+	"./Platform.hpp"
+
+1285117380 e:\_enigma\git\enigmanetsfml\system\sleep.hpp
+	"../Config.hpp"
+
+1285117954 source:e:\_enigma\git\enigmanetsfml\system\string.cpp
+	"./String.hpp"
+	"./Utf.hpp"
+	<iterator>
+	<cstring>
+
+1285117443 e:\_enigma\git\enigmanetsfml\system\utf.hpp
+	"../Config.hpp"
+	<algorithm>
+	<locale>
+	<string>
+	<cstdlib>
+	"./Utf.inl"
+
+1283971959 e:\_enigma\git\enigmanetsfml\system\utf.inl
+
+1285117972 source:e:\_enigma\git\enigmanetsfml\system\thread.cpp
+	"./Thread.hpp"
+	"./Win32/ThreadImpl.hpp"
+	"./Unix/ThreadImpl.hpp"
+
+1285117395 e:\_enigma\git\enigmanetsfml\system\thread.hpp
+	"../Config.hpp"
+	"./NonCopyable.hpp"
+	<cstdlib>
+
+1285153866 e:\_enigma\git\enigmanetsfml\system\win32\threadimpl.hpp
+	"../NonCopyable.hpp"
+	<windows.h>
+
+1285153620 e:\_enigma\git\enigmanetsfml\system\unix\threadimpl.hpp
+	"../NonCopyable.hpp"
+	<pthread.h>
+
+1285117999 source:e:\_enigma\git\enigmanetsfml\system\threadlocal.cpp
+	"./ThreadLocal.hpp"
+	"./Win32/ThreadLocalImpl.hpp"
+	"./Unix/ThreadLocalImpl.hpp"
+
+1285117407 e:\_enigma\git\enigmanetsfml\system\threadlocal.hpp
+	"../Config.hpp"
+	"./NonCopyable.hpp"
+	<cstdlib>
+
+1285153873 e:\_enigma\git\enigmanetsfml\system\win32\threadlocalimpl.hpp
+	"../NonCopyable.hpp"
+	<windows.h>
+
+1285153659 e:\_enigma\git\enigmanetsfml\system\unix\threadlocalimpl.hpp
+	"../NonCopyable.hpp"
+	<pthread.h>
+
+1285118018 source:e:\_enigma\git\enigmanetsfml\system\utf.cpp
+	"./Utf.hpp"
+	<exception>
+
+1285153813 source:e:\_enigma\git\enigmanetsfml\system\win32\muteximpl.cpp
+	"./MutexImpl.hpp"
+
+1285153821 source:e:\_enigma\git\enigmanetsfml\system\win32\platform.cpp
+	"./Platform.hpp"
+	<windows.h>
+
+1285153829 source:e:\_enigma\git\enigmanetsfml\system\win32\threadimpl.cpp
+	"./ThreadImpl.hpp"
+	"../Thread.hpp"
+	"../Err.hpp"
+	<process.h>
+
+1285153836 source:e:\_enigma\git\enigmanetsfml\system\win32\threadlocalimpl.cpp
+	"./ThreadLocalImpl.hpp"
+
+1285161237 source:e:\_enigma\git\enigmanetsfml\main.cpp
+	<iostream>
+	<string>
+	"Config.hpp"
+	"Network.hpp"
+
+1285115256 e:\_enigma\git\enigmanetsfml\network.hpp
+	"./System.hpp"
+	"./Network/Ftp.hpp"
+	"./Network/Http.hpp"
+	"./Network/IpAddress.hpp"
+	"./Network/Packet.hpp"
+	"./Network/SocketSelector.hpp"
+	"./Network/TcpListener.hpp"
+	"./Network/TcpSocket.hpp"
+	"./Network/UdpSocket.hpp"
+
+1285115356 e:\_enigma\git\enigmanetsfml\system.hpp
+	"./Config.hpp"
+	"./System/Clock.hpp"
+	"./System/Err.hpp"
+	"./System/Lock.hpp"
+	"./System/Mutex.hpp"
+	"./System/Randomizer.hpp"
+	"./System/Sleep.hpp"
+	"./System/String.hpp"
+	"./System/Thread.hpp"
+	"./System/ThreadLocal.hpp"
+	"./System/ThreadLocalPtr.hpp"
+	"./System/Utf.hpp"
+	"./System/Vector2.hpp"
+	"./System/Vector3.hpp"
+
+1285117424 e:\_enigma\git\enigmanetsfml\system\threadlocalptr.hpp
+	"./ThreadLocal.hpp"
+	"./ThreadLocalPtr.inl"
+
+1255769413 e:\_enigma\git\enigmanetsfml\system\threadlocalptr.inl
+
+1285117451 e:\_enigma\git\enigmanetsfml\system\vector2.hpp
+	"./Vector2.inl"
+
+1255517154 e:\_enigma\git\enigmanetsfml\system\vector2.inl
+
+1285117458 e:\_enigma\git\enigmanetsfml\system\vector3.hpp
+	"./Vector3.inl"
+
+1255517154 e:\_enigma\git\enigmanetsfml\system\vector3.inl
+
+1285153453 source:e:\_enigma\git\enigmanetsfml\network\unix\socketimpl.cpp
+	"./SocketImpl.hpp"
+	<errno.h>
+	<fcntl.h>
+	<string.h>
+
+1285153490 source:e:\_enigma\git\enigmanetsfml\system\unix\initializer.cpp
+	"../../Config.hpp"
+	<CoreFoundation/CoreFoundation.h>
+	<iostream>
+	<cstdio>
+
+1285153540 source:e:\_enigma\git\enigmanetsfml\system\unix\muteximpl.cpp
+	"./MutexImpl.hpp"
+
+1285153591 source:e:\_enigma\git\enigmanetsfml\system\unix\platform.cpp
+	"./Platform.hpp"
+	<unistd.h>
+	<sys/time.h>
+
+1285153641 source:e:\_enigma\git\enigmanetsfml\system\unix\threadimpl.cpp
+	"./ThreadImpl.hpp"
+	<../Thread.hpp>
+	<iostream>
+
+1285153668 source:e:\_enigma\git\enigmanetsfml\system\unix\threadlocalimpl.cpp
+	"./ThreadLocalImpl.hpp"
+
