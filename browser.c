@@ -6,6 +6,10 @@ EnigmaNet is free software and comes with ABSOLUTELY NO WARRANTY.
 See LICENSE for details.
 */
 
+// Implementation of some major aspects of protocols for http and ftp.
+// This allows easy communication with FTP and HTTP servers.
+// An example is also provided in the main() method at the bottom.
+
 #include "net.c"
 #include <stdarg.h>
 #include <stdlib.h>
@@ -75,6 +79,8 @@ char *ftpexpect(int in, char *exp) {
  return packet;
 }
 
+//Opens a connection with an FTP server using given hostname, username, and password.
+//Returns an identifier for the FTP connection.
 int ftp_open(char *host, char *user, char *pass) {
  int in = mplay_init_tcp(host,"ftp",0);
  if (in < 0) die("Connect",0);
@@ -89,6 +95,8 @@ int ftp_open(char *host, char *user, char *pass) {
  return in;
 }
 
+//Uploads data to an ftp server to be stored as file.
+//Indicate the ftp connection, the remote filename to store the data in, and the data (and size)
 void ftp_send(int in, char *file, char *msg, int msglen) {
  ftpsend(in,"PASV\r\n");
  char *ip = ftpexpect(in,"227 ");
@@ -113,12 +121,15 @@ void ftp_send(int in, char *file, char *msg, int msglen) {
  ftpexpect(in,"226 ");
 }
 
+//Properly terminates the connection with this ftp socket.
 void ftp_close(int in) {
  ftpsend(in,"QUIT\r\n");
  ftpexpect(in,"221 ");
  closesocket(in);
 }
 
+//Queries a http host and location, returns the contents
+//This method handles the packets and headers for you
 char *http(char *host, char *loc) {
  char *packet;
 
@@ -147,6 +158,9 @@ Connection: close\r\n\r\n";
  return packet;
 }
 
+//An example which fetches your external IP from http website 'whatismyip'.
+//and then uploads that IP an ftp server (here we assume localhost with a no-password root).
+//The ip gets stored on the ftp server as "ip.txt".
 int main() {
  char *ip = http("www.whatismyip.com","/automation/n09230945.asp");
  printf("Your IP is %s\n\n",ip);
