@@ -26,7 +26,7 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include "./ThreadImpl.hpp"
-#include <../Thread.hpp>
+#include "../Thread.hpp"
 #include <iostream>
 
 
