@@ -6,23 +6,104 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Release">
+			<Target title="Windows">
 				<Option output="bin\Release\EnigmaNetSfml" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj\Release\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-DSFML_SYSTEM_WINDOWS" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="-lws2_32" />
+					<Add library="E:\CodeBlocks\MinGW\lib\libws2_32.a" />
 				</Linker>
+			</Target>
+			<Target title="Unix">
+				<Option output="EnigmaNetSfml" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DSFML_SYSTEM_LINUX" />
+				</Compiler>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Config.hpp" />
+		<Unit filename="Network.hpp" />
+		<Unit filename="Network\Ftp.cpp" />
+		<Unit filename="Network\Ftp.hpp" />
+		<Unit filename="Network\Http.cpp" />
+		<Unit filename="Network\Http.hpp" />
+		<Unit filename="Network\IpAddress.cpp" />
+		<Unit filename="Network\IpAddress.hpp" />
+		<Unit filename="Network\Packet.cpp" />
+		<Unit filename="Network\Packet.hpp" />
+		<Unit filename="Network\Socket.cpp" />
+		<Unit filename="Network\Socket.hpp" />
+		<Unit filename="Network\SocketHandle.hpp" />
+		<Unit filename="Network\SocketImpl.hpp" />
+		<Unit filename="Network\SocketSelector.cpp" />
+		<Unit filename="Network\SocketSelector.hpp" />
+		<Unit filename="Network\TcpListener.cpp" />
+		<Unit filename="Network\TcpListener.hpp" />
+		<Unit filename="Network\TcpSocket.cpp" />
+		<Unit filename="Network\TcpSocket.hpp" />
+		<Unit filename="Network\UdpSocket.cpp" />
+		<Unit filename="Network\UdpSocket.hpp" />
+		<Unit filename="Network\Unix\SocketImpl.cpp" />
+		<Unit filename="Network\Unix\SocketImpl.hpp" />
+		<Unit filename="Network\Win32\SocketImpl.cpp" />
+		<Unit filename="Network\Win32\SocketImpl.hpp" />
+		<Unit filename="System.hpp" />
+		<Unit filename="System\Clock.cpp" />
+		<Unit filename="System\Clock.hpp" />
+		<Unit filename="System\Err.cpp" />
+		<Unit filename="System\Err.hpp" />
+		<Unit filename="System\Lock.cpp" />
+		<Unit filename="System\Lock.hpp" />
+		<Unit filename="System\Mutex.cpp" />
+		<Unit filename="System\Mutex.hpp" />
+		<Unit filename="System\NonCopyable.hpp" />
+		<Unit filename="System\Platform.hpp" />
+		<Unit filename="System\Randomizer.cpp" />
+		<Unit filename="System\Randomizer.hpp" />
+		<Unit filename="System\Resource.hpp" />
+		<Unit filename="System\Sleep.cpp" />
+		<Unit filename="System\Sleep.hpp" />
+		<Unit filename="System\String.cpp" />
+		<Unit filename="System\String.hpp" />
+		<Unit filename="System\Thread.cpp" />
+		<Unit filename="System\Thread.hpp" />
+		<Unit filename="System\ThreadLocal.cpp" />
+		<Unit filename="System\ThreadLocal.hpp" />
+		<Unit filename="System\ThreadLocalPtr.hpp" />
+		<Unit filename="System\Unix\Initializer.cpp" />
+		<Unit filename="System\Unix\MutexImpl.cpp" />
+		<Unit filename="System\Unix\MutexImpl.hpp" />
+		<Unit filename="System\Unix\Platform.cpp" />
+		<Unit filename="System\Unix\Platform.hpp" />
+		<Unit filename="System\Unix\ThreadImpl.cpp" />
+		<Unit filename="System\Unix\ThreadImpl.hpp" />
+		<Unit filename="System\Unix\ThreadLocalImpl.cpp" />
+		<Unit filename="System\Unix\ThreadLocalImpl.hpp" />
+		<Unit filename="System\Utf.cpp" />
+		<Unit filename="System\Utf.hpp" />
+		<Unit filename="System\Vector2.hpp" />
+		<Unit filename="System\Vector3.hpp" />
+		<Unit filename="System\Win32\MutexImpl.cpp" />
+		<Unit filename="System\Win32\MutexImpl.hpp" />
+		<Unit filename="System\Win32\Platform.cpp" />
+		<Unit filename="System\Win32\Platform.hpp" />
+		<Unit filename="System\Win32\ThreadImpl.cpp" />
+		<Unit filename="System\Win32\ThreadImpl.hpp" />
+		<Unit filename="System\Win32\ThreadLocalImpl.cpp" />
+		<Unit filename="System\Win32\ThreadLocalImpl.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

@@ -89,8 +89,6 @@ int main()
     double sockId = net_tcp_listen(1080);
     sockId = net_tcp_accept(sockId, true);
 
-
-
     return 0;
 }
 
