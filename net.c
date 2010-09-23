@@ -19,7 +19,7 @@ See LICENSE for details.
 //Returns an identifier for the socket, or negative on error.
 //For clients, the identifier indicates the server,
 //and may be used to receive messages from them.
-int mplay_init(char *addr, char *port, bool serve, bool udp) {
+int net_init(char *addr, char *port, bool serve, bool udp) {
 
 #ifdef WIN32
  // Make sure windows is using Winsock version request 2.2
@@ -79,21 +79,21 @@ int mplay_init(char *addr, char *port, bool serve, bool udp) {
 }
 
 //Initializes a tcp socket, which can either be a server or client.
-//See mplay_init for arguments and returns
-int mplay_init_tcp(char *addr, char *port, bool serve) {
- return mplay_init(addr,port,serve,0);
+//See net_init for arguments and returns
+int net_init_tcp(char *addr, char *port, bool serve) {
+ return net_init(addr,port,serve,0);
 }
 
 //Initializes a tcp socket, which can either be a server or client.
-//See mplay_init for arguments and returns
-int mplay_init_udp(char *localport, char serve) {
- return mplay_init(NULL,localport,serve,1);
+//See net_init for arguments and returns
+int net_init_udp(char *localport, char serve) {
+ return net_init(NULL,localport,serve,1);
 }
 
 //A server must accept or reject (ignore) incoming socket connections.
 //The argument is this server socket's ID.
 //Returns the incoming socket's ID, or -1 if an error occurred.
-int mplay_accept(int s) {
+int net_accept(int s) {
  return accept(s, NULL, NULL);
 }
 
@@ -109,7 +109,7 @@ char buf[BUFSIZE];
 //Iff it reads short of BUFSIZE, it will append a null character.
 //Otherwise, if it reads the full buffer, no null character can be appended.
 //There is no guarantee that the buffer will not already contain null characters.
-char *mplay_receive(int s) {
+char *net_receive(int s) {
  int r;
  if ((r = recv(s,buf,BUFSIZE,0)) == SOCKET_ERROR) return NULL;
  if (r == BUFSIZE) return buf;
@@ -122,7 +122,7 @@ char *mplay_receive(int s) {
 //Prints the message that was bounced, if available.
 //Returns bounce status. 0 on successful bounce. 1 on empty receive, 2 on empty send.
 //Returns -1 on receive error. -2 on send error.
-int mplay_bounce(int s) {
+int net_bounce(int s) {
  struct sockaddr_storage whom;
  u_int len = sizeof(whom);
  int n = recvfrom(s,buf,BUFSIZE,0,(struct sockaddr *)&whom,&len);
@@ -137,13 +137,13 @@ int mplay_bounce(int s) {
 
 //Sends a message to specified socket.
 //See documentation for Berkeley sockets send() method.
-#define mplay_send(s,msg,len) send(s,msg,len,0)
-/*int mplay_send(int s, char *msg, int len) {
+#define net_send(s,msg,len) send(s,msg,len,0)
+/*int net_send(int s, char *msg, int len) {
  return send(s,msg,len,0);
 }*/
 
 //Returns the port of a given socket.
-int mplay_get_port(int s) {
+int net_get_port(int s) {
  struct sockaddr_in sa;
  u_int sas = sizeof(sa);
  if (getsockname(s, (struct sockaddr*) &sa, &sas) == SOCKET_ERROR) {
@@ -189,7 +189,7 @@ void getIp() {
 //By default, sockets are initialized as blocking.
 //Returns 0 on success, any other value on error.
 //Windows users, see the return value of ioctlsocket.
-int mplay_blocking(int s, bool block) {
+int net_blocking(int s, bool block) {
 #ifdef WIN32
  u_long iMode = (block == 0) ? 1 : 0;
  return ioctlsocket(s,FIONBIO,&iMode);

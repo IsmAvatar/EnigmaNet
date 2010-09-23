@@ -23,12 +23,12 @@ See LICENSE for details.
  #define closesocket(s) close(s)
 #endif
 
-int mplay_init(char*,char*,char,char);
-int mplay_init_tcp(char*,char*,char);
-int mplay_init_udp(char*,char);
-int mplay_accept(int);
-char *mplay_receive(int);
-//int mplay_send(int,char*);
-int mplay_get_port(int);
-int mplay_blocking(int,char);
+int net_init(char*,char*,char,char);
+int net_init_tcp(char*,char*,char);
+int net_init_udp(char*,char);
+int net_accept(int);
+char *net_receive(int);
+//int net_send(int,char*);
+int net_get_port(int);
+int net_blocking(int,char);
 

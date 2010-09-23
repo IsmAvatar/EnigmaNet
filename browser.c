@@ -57,7 +57,7 @@ int prepare(char **ret, const char *cmd, int argc, ...) {
 
 void ftpsend(int in, char *msg) {
  printf("> %s",msg);
- if (mplay_send(in,msg,strlen(msg)) < 0)
+ if (net_send(in,msg,strlen(msg)) < 0)
   die("Send",1,in);
 }
 
@@ -67,13 +67,13 @@ void ftpparse(int in, char *cmd, char *arg, char *disp) {
  sprintf(packet,cmd,arg);
  printf("> ");
  printf(cmd,disp);
- len = mplay_send(in,packet,len);
+ len = net_send(in,packet,len);
  free(packet);
  if (len < 0) die("Send",1,in);
 }
 
 char *ftpexpect(int in, char *exp) {
- char *packet = mplay_receive(in);
+ char *packet = net_receive(in);
  printf("%s",packet);
  if (strncmp(packet,exp,4) != 0) die("Response",1,in);
  return packet;
@@ -82,7 +82,7 @@ char *ftpexpect(int in, char *exp) {
 //Opens a connection with an FTP server using given hostname, username, and password.
 //Returns an identifier for the FTP connection.
 int ftp_open(char *host, char *user, char *pass) {
- int in = mplay_init_tcp(host,"ftp",0);
+ int in = net_init_tcp(host,"ftp",0);
  if (in < 0) die("Connect",0);
  ftpexpect(in,"220 ");
 
@@ -112,11 +112,11 @@ void ftp_send(int in, char *file, char *msg, int msglen) {
  }
  *(r2++) = '\0';
  sprintf(port,"%d\0",atoi(r2) * 256 + atoi(strchr(r2,',') + 1));
- int out = mplay_init_tcp(ip,port,0);
+ int out = net_init_tcp(ip,port,0);
 
  ftpparse(in,"STOR %s\r\n",file,file); //ip overwritten
  ftpexpect(in,"150 ");
- mplay_send(out,msg,msglen);
+ net_send(out,msg,msglen);
  closesocket(out);
  ftpexpect(in,"226 ");
 }
@@ -133,7 +133,7 @@ void ftp_close(int in) {
 char *http(char *host, char *loc) {
  char *packet;
 
- int s = mplay_init_tcp(host,"http",0);
+ int s = net_init_tcp(host,"http",0);
  if (s < 0) die("Connect",0);
 
  char *cmd = "\
@@ -141,11 +141,11 @@ GET %s HTTP/1.1\r\n\
 Host: %s\r\n\
 Connection: close\r\n\r\n";
  int len = prepare(&packet,cmd,2,loc,host);
- int r = mplay_send(s,packet,len);
+ int r = net_send(s,packet,len);
  free(packet);
  if (r < 0) die("Send",1,s);
 
- if ((packet = mplay_receive(s)) == NULL)
+ if ((packet = net_receive(s)) == NULL)
   die("Receive",1,s);
 
  //HTTP 1.1 requires handling of 100 Continue.
