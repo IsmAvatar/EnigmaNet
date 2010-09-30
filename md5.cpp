@@ -1,25 +1,3 @@
-/* Taken from ReHash (www.reichlsoft.de.vu) and released
- * under GPL/LGPL with permission from ReHash author
- * Dominik Reichl <dominik.reichl@t-online.de>, Germany
- */
-
-/*
- **********************************************************************
- ** MD5.cpp                                                          **
- **                                                                  **
- ** - Style modified by Tony Ray, January 2001                       **
- **   Added support for randomizing initialization constants         **
- ** - Style modified by Dominik Reichl, April 2003                   **
- **   Optimized code                                                 **
- **                                                                  **
- ** MD5.c                                                            **
- ** RSA Data Security, Inc. MD5 Message Digest Algorithm             **
- ** Created: 2/17/90 RLR                                             **
- ** Revised: 1/91 SRD,AJ,BSK,JT Reference C Version                  **
- **********************************************************************
- */
-
-
 /*
  **********************************************************************
  ** Copyright (C) 1990, RSA Data Security, Inc. All rights reserved. **
@@ -41,6 +19,22 @@
  **                                                                  **
  ** These notices must be retained in any copies of any part of this **
  ** documentation and/or software.                                   **
+ **********************************************************************
+ */
+
+ /*
+ **********************************************************************
+ ** MD5.cpp                                                          **
+ **                                                                  **
+ ** - Style modified by Tony Ray, January 2001                       **
+ **   Added support for randomizing initialization constants         **
+ ** - Style modified by Dominik Reichl, April 2003                   **
+ **   Optimized code                                                 **
+ **                                                                  **
+ ** MD5.c                                                            **
+ ** RSA Data Security, Inc. MD5 Message Digest Algorithm             **
+ ** Created: 2/17/90 RLR                                             **
+ ** Revised: 1/91 SRD,AJ,BSK,JT Reference C Version                  **
  **********************************************************************
  */
 
