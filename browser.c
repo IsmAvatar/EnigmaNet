@@ -10,7 +10,7 @@ See LICENSE for details.
 // This allows easy communication with FTP and HTTP servers.
 // An example is also provided in the main() method at the bottom.
 
-#include "net.c"
+#include "net.h"
 #include <stdarg.h>
 #include <stdlib.h>
 

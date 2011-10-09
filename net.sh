@@ -3,7 +3,7 @@
 # net.sh [server|client]
 # builds both and then, if specified, runs as either a server or client
 
-gcc server.c -o server
+gcc -o server server.c net.c
 if [ $? -eq 0 ]; then
  gcc client.c -o client
 fi

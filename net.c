@@ -7,7 +7,6 @@ See LICENSE for details.
 */
 
 #include "net.h"
-#include <errno.h>
 
 #define bool char
 
@@ -151,36 +150,6 @@ int net_get_port(int s) {
  }
  return ntohs(sa.sin_port);
 }
-
-/*
-#include <netinet/in.h>
-#include <arpa/inet.h>
-
-//A debugging method which prints out the local hostname and IP.
-void getIp() {
-// WSADATA wsa_Data;
-// int wsa_ReturnCode = WSAStartup(0x101,&wsa_Data);
-
- // Get the local hostname
- int i;
- char hname[80];
- struct hostent *he;
- struct in_addr **addr_list;
-
- gethostname(hname, 80);
- if ((he = gethostbyname(hname)) == NULL) {
-  herror("gethostbyname");
-  return;
- }
-
- printf("Name: %s\n", he->h_name);
- addr_list = (struct in_addr **) he->h_addr_list;
- for (i = 0; addr_list[i] != NULL; i++) {
-  printf("%s\n",inet_ntoa(*addr_list[i]));
- }
-
-// WSACleanup();
-}*/
 
 //Sets whether given socket is in blocking mode
 //Blocking sockets will block on certain commands (read, accept) if nothing is available yet.

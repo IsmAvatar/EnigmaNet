@@ -6,14 +6,10 @@ EnigmaNet is free software and comes with ABSOLUTELY NO WARRANTY.
 See LICENSE for details.
 */
 
-#include "net.c"
+#include "net.h"
 #define TCP
 
 int main(int argc, char *argv[]) {
- getIp();
-}
-
-int main2(int argc, char *argv[]) {
 #ifdef TCP
  int s = net_init_tcp("0","2334",1);
 #else

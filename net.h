@@ -6,10 +6,12 @@ EnigmaNet is free software and comes with ABSOLUTELY NO WARRANTY.
 See LICENSE for details.
 */
 
+#include <errno.h>
 #include <stdio.h>
 #include <string.h>
 
 #ifdef _WIN32
+ #define _WIN32_WINNT 0x0501
  #include <winsock2.h>
  #include <ws2tcpip.h>
  #pragma comment (lib,"ws2_32")
