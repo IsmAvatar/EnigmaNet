@@ -9,7 +9,7 @@ See LICENSE for details.
 #include <stdio.h>
 #include <string.h>
 
-#ifdef WIN32
+#ifdef _WIN32
  #include <winsock2.h>
  #include <ws2tcpip.h>
  #pragma comment (lib,"ws2_32")
@@ -28,6 +28,7 @@ int net_init_tcp(char*,char*,char);
 int net_init_udp(char*,char);
 int net_accept(int);
 char *net_receive(int);
+#define net_send(s,msg,len) send(s,msg,len,0)
 //int net_send(int,char*);
 int net_get_port(int);
 int net_blocking(int,char);

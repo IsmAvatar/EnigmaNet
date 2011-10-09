@@ -21,7 +21,7 @@ See LICENSE for details.
 //and may be used to receive messages from them.
 int net_init(char *addr, char *port, bool serve, bool udp) {
 
-#ifdef WIN32
+#ifdef _WIN32
  // Make sure windows is using Winsock version request 2.2
  WSADATA wsaData;
  if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) return -1;
@@ -135,9 +135,8 @@ int net_bounce(int s) {
  return 0;
 }
 
-//Sends a message to specified socket.
+//Sends a message to specified socket. (We use a #define in the .h file instead)
 //See documentation for Berkeley sockets send() method.
-#define net_send(s,msg,len) send(s,msg,len,0)
 /*int net_send(int s, char *msg, int len) {
  return send(s,msg,len,0);
 }*/
@@ -153,6 +152,7 @@ int net_get_port(int s) {
  return ntohs(sa.sin_port);
 }
 
+/*
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
@@ -180,7 +180,7 @@ void getIp() {
  }
 
 // WSACleanup();
-}
+}*/
 
 //Sets whether given socket is in blocking mode
 //Blocking sockets will block on certain commands (read, accept) if nothing is available yet.
@@ -190,7 +190,7 @@ void getIp() {
 //Returns 0 on success, any other value on error.
 //Windows users, see the return value of ioctlsocket.
 int net_blocking(int s, bool block) {
-#ifdef WIN32
+#ifdef _WIN32
  u_long iMode = (block == 0) ? 1 : 0;
  return ioctlsocket(s,FIONBIO,&iMode);
 #else
