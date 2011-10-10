@@ -8,7 +8,7 @@ See LICENSE for details.
 
 #include "net.h"
 
-bool winsock_started = 1;
+bool winsock_started = 0;
 
 bool net_init() {
  if (winsock_started) return 1;
