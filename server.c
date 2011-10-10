@@ -11,9 +11,9 @@ See LICENSE for details.
 
 int main(int argc, char *argv[]) {
 #ifdef TCP
- int s = net_init_tcp("0","2334",1);
+ int s = net_connect_tcp("0","2334",1);
 #else
- int s = net_init_udp("2334",1);
+ int s = net_connect_udp("2334",1);
 #endif
  if (s < 0) {
   printf("Failed to serve (%d)\n",s);

@@ -82,7 +82,7 @@ char *ftpexpect(int in, char *exp) {
 //Opens a connection with an FTP server using given hostname, username, and password.
 //Returns an identifier for the FTP connection.
 int ftp_open(char *host, char *user, char *pass) {
- int in = net_init_tcp(host,"ftp",0);
+ int in = net_connect_tcp(host,"ftp",0);
  if (in < 0) die("Connect",0);
  ftpexpect(in,"220 ");
 

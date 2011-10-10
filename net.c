@@ -8,28 +8,41 @@ See LICENSE for details.
 
 #include "net.h"
 
-#define bool char
+bool winsock_started = 1;
+
+bool net_init() {
+ if (winsock_started) return 1;
+#ifdef _WIN32
+ // Make sure windows is using Winsock version request 2.2
+ WSADATA wsaData;
+ if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) return 0;
+ if (LOBYTE(wsaData.wVersion) != 2
+ ||  HIBYTE(wsaData.wVersion) != 2) {
+  WSACleanup();
+  return 0;
+ }
+#endif
+ return winsock_started = 1;
+}
+
+bool net_cleanup() {
+ if (!winsock_started) return 1;
+#ifdef _WIN32
+ WSACleanup();
+#endif
+ return !(winsock_started = 0);
+}
 
 //initializes a socket
 //serve specifies if this is a server socket (1) or a client socket (0)
-//udp specifies whether to use udp (1) or tcp (1)
+//udp specifies whether to use udp (1) or tcp (0)
 //if this is not a server, addr and port specify who to connect to.
 //IPv4 and v6 are both supported.
 //Returns an identifier for the socket, or negative on error.
 //For clients, the identifier indicates the server,
 //and may be used to receive messages from them.
-int net_init(char *addr, char *port, bool serve, bool udp) {
-
-#ifdef _WIN32
- // Make sure windows is using Winsock version request 2.2
- WSADATA wsaData;
- if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) return -1;
- if (LOBYTE(wsaData.wVersion) != 2
- ||  HIBYTE(wsaData.wVersion) != 2) {
-  WSACleanup();
-  return -1;
- }
-#endif
+int net_connect(char *addr, char *port, bool serve, bool udp) {
+ net_init();
 
  struct addrinfo hints, *sinf;
  memset(&hints, 0, sizeof(hints));
@@ -78,15 +91,15 @@ int net_init(char *addr, char *port, bool serve, bool udp) {
 }
 
 //Initializes a tcp socket, which can either be a server or client.
-//See net_init for arguments and returns
-int net_init_tcp(char *addr, char *port, bool serve) {
- return net_init(addr,port,serve,0);
+//See net_connect for arguments and returns
+int net_connect_tcp(char *addr, char *port, bool serve) {
+ return net_connect(addr,port,serve,0);
 }
 
 //Initializes a tcp socket, which can either be a server or client.
-//See net_init for arguments and returns
-int net_init_udp(char *localport, char serve) {
- return net_init(NULL,localport,serve,1);
+//See net_connect for arguments and returns
+int net_connect_udp(char *localport, bool serve) {
+ return net_connect(NULL,localport,serve,1);
 }
 
 //A server must accept or reject (ignore) incoming socket connections.

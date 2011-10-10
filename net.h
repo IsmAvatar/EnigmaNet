@@ -9,6 +9,7 @@ See LICENSE for details.
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
 #ifdef _WIN32
  #define _WIN32_WINNT 0x0501
@@ -25,13 +26,16 @@ See LICENSE for details.
  #define closesocket(s) close(s)
 #endif
 
-int net_init(char*,char*,char,char);
-int net_init_tcp(char*,char*,char);
-int net_init_udp(char*,char);
+#define bool char
+
+bool net_init();
+bool net_cleanup();
+int net_connect(char*,char*,bool,bool);
+int net_connect_tcp(char*,char*,bool);
+int net_connect_udp(char*,bool);
 int net_accept(int);
 char *net_receive(int);
 #define net_send(s,msg,len) send(s,msg,len,0)
-//int net_send(int,char*);
 int net_get_port(int);
-int net_blocking(int,char);
+int net_blocking(int,bool);
 
