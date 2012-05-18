@@ -3,8 +3,8 @@
 # br.sh [norun]
 # builds the broswer code and then, if no arguments are specified, runs it
 
-gcc -o browser browser.c net.c
+gcc net.c browser.c -o browser.run
 if [ $? -eq 0 ]; then
- ./browser
+ ./browser.run
 fi
 
