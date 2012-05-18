@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
  printf("Connected to %d\nSending: %s\n",s,"Hello World");
  int r;
  char *msg = "Hello World";
- if ((r = net_send(s,msg,strlen(msg)+1) < 0) {
+ if (r = net_send(s,msg,strlen(msg)+1) < 0) {
   printf("Send error (%d, %d)\n",r,errno);
   return 0;
  }
