@@ -112,7 +112,7 @@ void ftp_send(int in, char *file, char *msg, int msglen) {
  }
  *(r2++) = '\0';
  sprintf(port,"%d\0",atoi(r2) * 256 + atoi(strchr(r2,',') + 1));
- int out = net_init_tcp(ip,port,0);
+ int out = net_connect_tcp(ip,port,0);
 
  ftpparse(in,"STOR %s\r\n",file,file); //ip overwritten
  ftpexpect(in,"150 ");
@@ -133,7 +133,7 @@ void ftp_close(int in) {
 char *http(char *host, char *loc) {
  char *packet;
 
- int s = net_init_tcp(host,"http",0);
+ int s = net_connect_tcp(host,"http",0);
  if (s < 0) die("Connect",0);
 
  char *cmd = "\
