@@ -139,20 +139,24 @@ char *http(char *host, char *loc) {
  char *cmd = "\
 GET %s HTTP/1.1\r\n\
 Host: %s\r\n\
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0\r\n\
 Connection: close\r\n\r\n";
  int len = prepare(&packet,cmd,2,loc,host);
  int r = net_send(s,packet,len);
  free(packet);
  if (r < 0) die("Send",1,s);
 
- if ((packet = net_receive(s)) == NULL)
-  die("Receive",1,s);
+ do {
+  if ((packet = net_receive(s)) == NULL)
+   die("Receive",1,s);
 
- //HTTP 1.1 requires handling of 100 Continue.
- while (strstr(packet,"HTTP/1.1 100 Continue\r\n") != NULL)
-  packet = strstr(packet,"\r\n\r\n") + 4;
- //skip the header
- packet = strstr(packet,"\r\n\r\n") + 4;
+  //HTTP 1.1 requires handling of 100 Continue.
+  while (strstr(packet,"HTTP/1.1 100 Continue\r\n") != NULL)
+   packet = strstr(packet,"\r\n\r\n") + 4;
+  //skip the header
+  packet = strstr(packet,"\r\n\r\n");
+ } while (packet == NULL); //packet not filled? Go back for more.
+ packet += 4;
 
  closesocket(s);
  return packet;
@@ -162,9 +166,10 @@ Connection: close\r\n\r\n";
 //and then uploads that IP an ftp server (here we assume localhost with a no-password root).
 //The ip gets stored on the ftp server as "ip.txt".
 int main() {
- char *ip = http("www.whatismyip.com","/automation/n09230945.asp");
+ char *ip = http("automation.whatismyip.com","/n09230945.asp");
  printf("Your IP is %s\n\n",ip);
 
+ printf("Now doing ftp.\n");
  char *host = "localhost";
  char *user = "root";
  char *pass = "";
